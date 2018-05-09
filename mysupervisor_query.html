@@ -104,7 +104,7 @@
     function cbSearchName(resp) {
         var result = resp.result    ////resp is an object, resp.result is a JSON string
         console.log("return of rpc call: " + JSON.stringify(result));
-        if (result === 'empty name' || result === null) {
+        if (result === "null" || result === null) {
             console.log(result);
             alert("没有找到QAQ，请查询马天猫");
         } else {
@@ -132,7 +132,7 @@
     function cbSearchCol(resp) {
         var result = resp.result    ////resp is an object, resp.result is a JSON string
         console.log("return of rpc call: " + JSON.stringify(result))
-        if (result === 'empty college' || result === null) {
+        if (result === "null" || result === null) {
             console.log(result);
             alert("没有找到QAQ，请查询马天猫");
         } else {
@@ -160,7 +160,7 @@
     function cbSearchDep(resp) {
         var result = resp.result    ////resp is an object, resp.result is a JSON string
         console.log("return of rpc call: " + JSON.stringify(result))
-        if (result === 'empty department' || result === null) {
+        if (result === "null" || result === null) {
             console.log(result);
             alert("没有找到QAQ，请查询马天猫");
         } else {
