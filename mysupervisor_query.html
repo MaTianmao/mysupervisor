@@ -104,7 +104,7 @@
     function cbSearchName(resp) {
         var result = resp.result    ////resp is an object, resp.result is a JSON string
         console.log("return of rpc call: " + JSON.stringify(result));
-        if (result === 'empty name' || !result) {
+        if (result === 'empty name' || result === null) {
             console.log(result);
             alert("没有找到QAQ，请查询马天猫");
         } else {
@@ -117,12 +117,12 @@
             var tmp = "<div id=\"result\">";
             for (var i = 0; i < end.length; i++) {
                 obj += "<div class=\"card\"><div class=\"card-body\">";
-                obj += "<div class=\"card-date\"><time>" + end[i].name + "</time></div>";
-                obj += "<div class=\"card-title\"><h3>" + end[i].college + "</h3></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].department + "</p></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].age + "</p></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].title + "</p></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].comment + "</p></div>";
+                obj += "<div class=\"card-date\"><time>" + "姓名： "+end[i].name + "</time></div>";
+                obj += "<div class=\"card-title\"><h3>" + "学校： "+end[i].college + "</h3></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "学部： "+end[i].department + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "年龄： "+end[i].age + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "职称： "+end[i].title + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "评价： "+end[i].comment + "</p></div>";
                 obj += "</div></div>";
             }
             obj += "</div>";
@@ -132,7 +132,7 @@
     function cbSearchCol(resp) {
         var result = resp.result    ////resp is an object, resp.result is a JSON string
         console.log("return of rpc call: " + JSON.stringify(result))
-        if (result === 'empty college' || !result) {
+        if (result === 'empty college' || result === null) {
             console.log(result);
             alert("没有找到QAQ，请查询马天猫");
         } else {
@@ -145,12 +145,12 @@
             var tmp = "<div id=\"result\">";
             for (var i = 0; i < end.length; i++) {
                 obj += "<div class=\"card\"><div class=\"card-body\">";
-                obj += "<div class=\"card-date\"><time>" + end[i].name + "</time></div>";
-                obj += "<div class=\"card-title\"><h3>" + end[i].college + "</h3></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].department + "</p></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].age + "</p></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].title + "</p></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].comment + "</p></div>";
+                obj += "<div class=\"card-date\"><time>" + "姓名： "+end[i].name + "</time></div>";
+                obj += "<div class=\"card-title\"><h3>" + "学校： "+end[i].college + "</h3></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "学部： "+end[i].department + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "年龄： "+end[i].age + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "职称： "+end[i].title + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "评价： "+end[i].comment + "</p></div>";
                 obj += "</div></div>";
             }
             obj += "</div>";
@@ -160,7 +160,7 @@
     function cbSearchDep(resp) {
         var result = resp.result    ////resp is an object, resp.result is a JSON string
         console.log("return of rpc call: " + JSON.stringify(result))
-        if (result === 'empty department' || !result) {
+        if (result === 'empty department' || result === null) {
             console.log(result);
             alert("没有找到QAQ，请查询马天猫");
         } else {
@@ -173,12 +173,12 @@
             var tmp = "<div id=\"result\">";
             for (var i = 0; i < end.length; i++) {
                 obj += "<div class=\"card\"><div class=\"card-body\">";
-                obj += "<div class=\"card-date\"><time>" + end[i].name + "</time></div>";
-                obj += "<div class=\"card-title\"><h3>" + end[i].college + "</h3></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].department + "</p></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].age + "</p></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].title + "</p></div>";
-                obj += "<div class=\"card-exceprt\"><p>" + end[i].comment + "</p></div>";
+                obj += "<div class=\"card-date\"><time>" + "姓名： "+end[i].name + "</time></div>";
+                obj += "<div class=\"card-title\"><h3>" + "学校： "+end[i].college + "</h3></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "学部： "+end[i].department + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "年龄： "+end[i].age + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "职称： "+end[i].title + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + "评价： "+end[i].comment + "</p></div>";
                 obj += "</div></div>";
             }
             obj += "</div>";
