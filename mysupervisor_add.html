@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <link rel="stylesheet" href="./lib/css/add_style.css" type="text/css" />
+    <link rel="shortcut icon" href="./static/favicon.ICO" type="image/x-icon" />
+    <title>发布信息</title>
+    
+</head>
+<script src=./lib/jquery-3.3.1.min.js></script>
+    <script src=./lib/nebPay.js></script>
+    <script src=./lib/nebulas.js></script>
+    <script>
+            var NebPay = require("nebpay");     //https://github.com/nebulasio/nebPay
+            var nebPay = new NebPay();
+            var serialNumber
+            var to = "n1jnnTj5Bn3YhZsZbDT84KRuvRGtE64qm9t";
+            var value = "0";
+            var callFunction = "Add"
+        
+            function doSubmitForm() {
+                var na = document.getElementById('name');
+                var co = document.getElementById('college');
+                var de = document.getElementById('department');
+                var ag = document.getElementById('age');
+                var ti = document.getElementById('title');
+                var com = document.getElementById('comment');
+                var flag = 0;
+                if (!na.value || na.value === "") {
+                    flag = 1;
+                    alert("请输入导师姓名！");
+                    return;
+                }
+                if (!co.value || co.value === "") {
+                    flag = 1;
+                    alert("请输入导师所在学校！");
+                    return;
+                }
+                if (!de.value || de.value === "") {
+                    flag = 1;
+                    alert("请输入导师所在专业方向！");
+                    return;
+                }
+                if (!ag.value || ag.value === "") {
+                    flag = 1;
+                    alert("请输入导师年龄，若不知道请输入-1！");
+                    return;
+                }
+                if (!ti.value || ti.value === "") {
+                    flag = 1;
+                    alert("请输入导师职称，若不知道请输入未知！");
+                    return;
+                }
+                if (!com.value || com.value === "") {
+                    flag = 1;
+                    alert("请输入您对导师的评价，从科研经费，水平，学生前途等多方面评价！");
+                    return;
+                }
+                if (flag === 1) return;
+        
+                var callArgs = "[\"" + $("#name").val() + "\",\"" + $("#college").val() + "\",\"" + $("#department").val() + "\",\"" + $("#age").val() + "\",\"" + $("#title").val() + "\",\"" + $("#comment").val() + "\"]"
+                serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
+                    listener: cbPush        //设置listener, 处理交易返回信息
+                });
+                console.log("afterpay");
+                
+        
+            }
+        
+            function cbPush(resp) {
+                console.log("response of push: " + JSON.stringify(resp))
+            } 
+        </script>
+
+
+<body>
+    <div class="top">
+        <div class="title">
+            <h1 align="center">基于星云链的导师评价网</h1>
+        </div>
+        <div class="logo">
+            <h6 align="center">
+                <img src="./static/nebulasx60.png" align="middle" />
+            </h6>
+        </div>
+    </div>
+    <div class="line">
+        <hr />
+    </div>
+    <div class="container">
+        <form id="submit_information">
+            <h3>请在下方输入导师信息</h3>
+            <h4>请务必保证信息真实有效!</h4>
+            <fieldset>
+                <input placeholder="导师姓名" type="text" tabindex="1" id="name" required autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="导师学校" type="college" tabindex="2" id="college" required>
+            </fieldset>
+            <fieldset>
+                <input placeholder="导师年龄（若不知道请输入-1）" type="age" tabindex="3" id="age" required>
+            </fieldset>
+            <fieldset>
+                <input placeholder="导师职称" type="title" tabindex="4" id="title" required>
+            </fieldset>
+            <fieldset>
+                    <input placeholder="导师职称" type="department" tabindex="4" id="department" required>
+                </fieldset>
+            <fieldset>
+                <textarea placeholder="请输入您对导师的评价，从科研经费，水平，学生前途等多方面评价！" tabindex="5" id="comment" required></textarea>
+            </fieldset>
+            <fieldset>
+                <button type="submit" class="sub" id="push" onclick="doSubmitForm()">
+                    提交
+                </button>
+            </fieldset>
+            <fieldset>
+                <button type="submit" class="return_button">
+                    <a href="mysupervisor_index.html">返回主页</a>
+                </button>
+            </fieldset>
+
+        </form>
+    </div>
+    <div id="wrap-r">欢迎扫码加入保研学长说
+        <br>
+        <img src="./static/gg1.jpg" align="middle" style="width: 300px;height: 150px;" />
+    </div>
+    <div id="wrap-l">如果你想出国，欢迎加入浙里跃
+        <br>
+        <img src="./static/gg2.jpg" align="middle" style="width: 150px;height: 150px;" />
+    </div>
+    <br>
+    <br>
+</body>
+
+</html>

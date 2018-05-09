@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <link rel="stylesheet" href="./lib/buttons.css" type="text/css" />
+    <link rel="stylesheet" href="./lib/css/font-awesome.css" type="text/css" />
+    <link rel="shortcut icon" href="./static/favicon.ICO" type="image/x-icon" />
+    <title>首页</title>
+</head>
+
+<body>
+    <style type="text/css">
+        #wrap-r {
+            display: block;
+            bottom: 0px;
+            right: 1px !important;
+            right: 18px;
+            /*width: 200px;*/
+            line-height: 30px;
+            position: fixed;
+            border: 1px solid #fff;
+            text-align: center;
+            color: #fff;
+            background: #000;
+        }
+
+         #wrap-l {
+            display: block;
+            bottom: 0px;
+            left: 1px !important;
+            left: 18px;
+            /*width: 200px;*/
+            line-height: 30px;
+            position: fixed;
+            border: 1px solid #fff;
+            text-align: center;
+            color: #fff;
+            background: #000;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .left {
+            width: 50%;
+            height: 700px;
+            float: left;
+            background-color: aquamarine;
+            text-align: center;
+            line-height: 700px;
+        }
+
+        .right {
+            height: 700px;
+            overflow: hidden;
+            background-color: yellowgreen;
+            text-align: center;
+            line-height: 700px;
+        }
+    </style>
+    <div class="top">
+        <div class="title">
+            <h1 align="center">基于星云链的导师评价网</h1>
+        </div>
+        <div class="logo">
+            <h6 align="center">
+                <img src="./static/nebulasx60.png" align="middle" />
+            </h6>
+        </div>
+    </div>
+    <div>
+        <div class="left">
+            <a href="mysupervisor_query.html">
+                <button class="button button-royal button-square button-giant" style="vertical-align:middle;width: 200px;height: 200px">
+                    <i class="fa fa-search" style="font-size: 100px">
+                    </i>
+                    <br> 寻找导师
+                </button>
+            </a>
+        </div>
+        <div class="right">
+            <a href="mysupervisor_add.html">
+
+                <button class="button button-royal button-square button-giant" style="vertical-align:middle;width: 200px;height: 200px">
+                    <i class="fa fa-pencil" style="font-size: 100px"></i>
+                    <br> 发布信息
+                </button>
+            </a>
+        </div>
+    </div>
+    <div id="wrap-r">欢迎扫码加入保研学长说
+        <br>
+        <img src="./static/gg1.jpg" align="middle" style="width: 300px;height: 150px;"/>
+    </div>
+    <div id="wrap-l">如果你想出国，欢迎加入浙里跃
+        <br>
+        <img src="./static/gg2.jpg" align="middle" style="width: 150px;height: 150px;"/>
+    </div>
+
+</body>
+
+</html>

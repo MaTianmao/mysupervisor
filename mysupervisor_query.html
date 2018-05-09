@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <script src=lib/jquery-3.3.1.min.js></script>
+    <script src=lib/nebPay.js></script>
+    <script src=lib/nebulas.js></script>
+    <link rel="shortcut icon" href="./static/favicon.ICO" type="image/x-icon" />
+    <link rel="stylesheet" href="./lib/css/query.css">
+    <title>寻找导师</title>
+</head>
+
+<script>
+    var dappAddress = "n1jnnTj5Bn3YhZsZbDT84KRuvRGtE64qm9t";
+    function doQueryForm1() {
+        var nebulas = require("nebulas"),
+            Account = nebulas.Account,
+            neb = new nebulas.Neb();
+        neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+        var na = document.getElementById('s1');
+        if (!na.value || na.value === "") {
+            alert("请输入导师姓名！");
+            return;
+        } else {
+            var from = Account.NewAccount().getAddressString();
+            var value = "0";
+            var nonce = "0"
+            var gas_price = "1000000"
+            var gas_limit = "2000000"
+            var callFunction = "NameQuery";
+            var callArgs = "[\"" + $("#s1").val() + "\"]"; //in the form of ["args"]
+            var contract = {
+                "function": callFunction,
+                "args": callArgs
+            }
+            neb.api.call(from, dappAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
+                cbSearchName(resp)
+            }).catch(function (err) {
+                //cbSearch(err)
+                console.log("error:" + err.message)
+            })
+        }
+    }
+    function doQueryForm2() {
+        var nebulas = require("nebulas"),
+            Account = nebulas.Account,
+            neb = new nebulas.Neb();
+        neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+        var na = document.getElementById('s2');
+        if (!na.value || na.value === "") {
+            alert("请输入学校！");
+            return;
+        } else {
+            var from = Account.NewAccount().getAddressString();
+            var value = "0";
+            var nonce = "0"
+            var gas_price = "1000000"
+            var gas_limit = "2000000"
+            var callFunction = "CollegeQuery";
+            var callArgs = "[\"" + $("#s2").val() + "\"]"; //in the form of ["args"]
+            var contract = {
+                "function": callFunction,
+                "args": callArgs
+            }
+            neb.api.call(from, dappAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
+                cbSearchCol(resp)
+            }).catch(function (err) {
+                //cbSearch(err)
+                console.log("error:" + err.message)
+            })
+        }
+    }
+    function doQueryForm3() {
+        var nebulas = require("nebulas"),
+            Account = nebulas.Account,
+            neb = new nebulas.Neb();
+        neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+        var na = document.getElementById('s3');
+        if (!na.value || na.value === "") {
+            alert("请输入学校！");
+            return;
+        } else {
+            var from = Account.NewAccount().getAddressString();
+            var value = "0";
+            var nonce = "0"
+            var gas_price = "1000000"
+            var gas_limit = "2000000"
+            var callFunction = "DepartmentQuery";
+            var callArgs = "[\"" + $("#s3").val() + "\"]"; //in the form of ["args"]
+            var contract = {
+                "function": callFunction,
+                "args": callArgs
+            }
+            neb.api.call(from, dappAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
+                cbSearchDep(resp)
+            }).catch(function (err) {
+                //cbSearch(err)
+                console.log("error:" + err.message)
+            })
+        }
+    }
+
+    //return of search,
+    function cbSearchName(resp) {
+        var result = resp.result    ////resp is an object, resp.result is a JSON string
+        console.log("return of rpc call: " + JSON.stringify(result));
+        if (result === 'empty name') {
+            console.log(result);
+        } else {
+            //console.log("work");
+            var mpp = JSON.stringify(result);
+            var tmpp = JSON.parse(mpp);
+            var end = JSON.parse(tmpp)
+            document.getElementById("result").innerHTML = "";
+            var obj = document.getElementById("result").innerHTML;
+            var tmp = "<div id=\"result\">";
+            for (var i = 0; i < end.length; i++) {
+                obj += "<div class=\"card\"><div class=\"card-body\">";
+                obj += "<div class=\"card-date\"><time>" + end[i].name + "</time></div>";
+                obj += "<div class=\"card-title\"><h3>" + end[i].college + "</h3></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].department + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].age + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].title + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].comment + "</p></div>";
+                obj += "</div></div>";
+            }
+            obj += "</div>";
+            document.getElementById('result').innerHTML = obj
+        }
+    }
+    function cbSearchCol(resp) {
+        var result = resp.result    ////resp is an object, resp.result is a JSON string
+        console.log("return of rpc call: " + JSON.stringify(result))
+        if (result === 'empty college') {
+            console.log(result);
+        } else {
+            //console.log("work");
+            var mpp = JSON.stringify(result);
+            var tmpp = JSON.parse(mpp);
+            var end = JSON.parse(tmpp)
+            document.getElementById("result").innerHTML = "";
+            var obj = document.getElementById("result").innerHTML;
+            var tmp = "<div id=\"result\">";
+            for (var i = 0; i < end.length; i++) {
+                obj += "<div class=\"card\"><div class=\"card-body\">";
+                obj += "<div class=\"card-date\"><time>" + end[i].name + "</time></div>";
+                obj += "<div class=\"card-title\"><h3>" + end[i].college + "</h3></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].department + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].age + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].title + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].comment + "</p></div>";
+                obj += "</div></div>";
+            }
+            obj += "</div>";
+            document.getElementById('result').innerHTML = obj
+        }
+    }
+    function cbSearchDep(resp) {
+        var result = resp.result    ////resp is an object, resp.result is a JSON string
+        console.log("return of rpc call: " + JSON.stringify(result))
+        if (result === 'empty department') {
+            console.log(result);
+        } else {
+            //console.log("work");
+            var mpp = JSON.stringify(result);
+            var tmpp = JSON.parse(mpp);
+            var end = JSON.parse(tmpp)
+            document.getElementById("result").innerHTML = "";
+            var obj = document.getElementById("result").innerHTML;
+            var tmp = "<div id=\"result\">";
+            for (var i = 0; i < end.length; i++) {
+                obj += "<div class=\"card\"><div class=\"card-body\">";
+                obj += "<div class=\"card-date\"><time>" + end[i].name + "</time></div>";
+                obj += "<div class=\"card-title\"><h3>" + end[i].college + "</h3></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].department + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].age + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].title + "</p></div>";
+                obj += "<div class=\"card-exceprt\"><p>" + end[i].comment + "</p></div>";
+                obj += "</div></div>";
+            }
+            obj += "</div>";
+            document.getElementById('result').innerHTML = obj
+        }
+    }
+
+    function tmpClick() {
+        var kind = document.getElementsByClassName("selected")[0].value;
+        if (kind == 1) {
+            doQueryForm1()
+        } else if (kind == 2) {
+            doQueryForm2()
+        } else if (kind == 3) {
+            doQueryForm3()
+        }
+    }
+
+</script>
+
+<body>
+    <div class="top">
+        <div class="title">
+            <h1 align="center">基于星云链的导师评价网</h1>
+        </div>
+        <div class="logo">
+            <h6 align="center">
+                <img src="./static/nebulasx60.png" align="middle" />
+            </h6>
+        </div>
+    </div>
+    <div class="line">
+        <hr />
+    </div>
+
+    <div class="search-hovertree-form">
+        <div id="search-bd" class="search-bd">
+            <ul>
+                <li class="selected" value="1">按姓名</li>
+                <li value="2">按学校</li>
+                <li value="3">按专业</li>
+            </ul>
+        </div>
+        <div id="search-hd" class="search-hd">
+            <div class="search-bg"></div>
+            <input type="text" id="s1" class="search-hovertree-input">
+            <input type="text" id="s2" class="search-hovertree-input">
+            <input type="text" id="s3" class="search-hovertree-input">
+            <span class="s1 pholder">请输入姓名</span>
+            <span class="s2 pholder">请输入学校</span>
+            <span class="s2 pholder">请输入专业</span>
+            <button id="submit" class="btn-search" value="搜索" onclick="tmpClick()">搜索</button>
+        </div>
+    </div>
+    <div id="result">
+
+    </div>
+    <div id="wrap-r">欢迎扫码加入保研学长说
+        <br>
+        <img src="./static/gg1.jpg" align="middle" style="width: 300px;height: 150px;" />
+    </div>
+    <div id="wrap-l">如果你想出国，欢迎加入浙里跃
+        <br>
+        <img src="./static/gg2.jpg" align="middle" style="width: 150px;height: 150px;" />
+    </div>
+</body>
+<script type="text/javascript">$(function () {
+        //通用头部搜索切换
+        $('#search-hd .search-hovertree-input').on('input propertychange', function () {
+            var val = $(this).val();
+            if (val.length > 0) {
+                $('#search-hd .pholder').hide(0);
+            } else {
+                var index = $('#search-bd li.selected').index();
+                $('#search-hd .pholder').eq(index).show().siblings('.pholder').hide(0);
+            }
+        })
+        $('#search-bd li').click(function () {
+            var index = $(this).index();
+            $('#search-hd .pholder').eq(index).show().siblings('.pholder').hide(0);
+            $('#search-hd .search-hover' + 'tree-input').eq(index).show().siblings('.search-hovertree-input').hide(0);
+            $(this).addClass('selected').siblings().removeClass('selected');
+            $('#search-hd .search-hovertree-input').val('');
+        });
+    })</script>
+
+</html>

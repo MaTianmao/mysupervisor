@@ -1,0 +1,176 @@
+    .search-hovertree-form {
+        width: 700px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    * {
+        list-style: none;
+    }
+    .search-hovertree-form .search-bd {
+        height: 50px;
+    }
+
+    .search-hovertree-form .search-bd li {
+        font-size: 20px;
+        width: 80px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        float: left;
+        cursor: pointer;
+        background-color: #eee;
+        color: #666;
+    }
+
+    .search-hovertree-form .search-bd li.selected {
+        color: #fff;
+        font-weight: 700;
+        background-color: #B61D1D;
+    }
+
+    .search-hovertree-form .search-hd {
+        height: 50px;
+        background-color: #B61D1D;
+        padding: 3px;
+        position: relative;
+    }
+
+    #wrap-r {
+        display: block;
+        bottom: 0px;
+        right: 1px !important;
+        right: 18px;
+        /*width: 200px;*/
+        line-height: 30px;
+        position: fixed;
+        border: 1px solid #fff;
+        text-align: center;
+        color: #fff;
+        background: #000;
+    }
+
+     #wrap-l {
+        display: block;
+        bottom: 0px;
+        left: 1px !important;
+        left: 18px;
+        /*width: 200px;*/
+        line-height: 30px;
+        position: fixed;
+        border: 1px solid #fff;
+        text-align: center;
+        color: #fff;
+        background: #000;
+    }
+    .search-hovertree-form .search-hd .search-hovertree-input {
+        width: 600px;
+        height: 48px;
+        line-height: 50px;
+        font-size: 30px;
+        padding: 6px 0;
+        background: none;
+        text-indent: 10px;
+        border: 0;
+        outline: none;
+        position: relative;
+        left: 3px;
+        top: 0;
+        z-index: 5;
+    }
+
+    .search-hovertree-form .search-hd .btn-search {
+        width: 80px;
+        height: 50px;
+        line-height: 50px;
+        position: absolute;
+        right: 3px;
+        top: 3px;
+        border: 0;
+        z-index: 6;
+        cursor: pointer;
+        font-size: 25px;
+        color: #fff;
+        font-weight: 700;
+        background: none;
+        outline: none;
+    }
+
+    .search-hovertree-form .search-hd .pholder {
+        display: inline-block;
+        padding: 2px 0;
+        font-size: 25px;
+        color: #999;
+        position: absolute;
+        left: 13px;
+        top: 11px;
+        z-index: 4;
+        background: url(http://hovertree.com/texiao/jquery/23/images/zoom.jpg) no-repeat 0 0;
+        padding-left: 25px;
+        top: 11px;
+    }
+
+    .search-hovertree-form .search-hd .s2,
+    .search-hovertree-form .search-hd #s2 {
+        display: none;
+    }
+
+    .search-hovertree-form .search-bg {
+        width: 610px;
+        height: 50px;
+        background-color: #fff;
+        position: absolute;
+        left: 3px;
+        top: 3px;
+        z-index: 1;
+    }
+
+    a {
+        color: blue
+    }
+    .card {
+        width: 400px;
+        margin: 25px;
+        background-color: white;
+        box-shadow: 0px 5px 20px #999;
+        float: left;
+    }
+
+    .card a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .card-body {
+        text-align: center;
+        padding: 15px 20px;
+        box-sizing: border-box;
+    }
+
+    .card-date {
+        font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    .card-title,
+    .card-excerpt {
+        font-family: 'Playfair Display', serif;
+    }
+
+    .card-date,
+    .card-title {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .card-date,
+    .card-excerpt {
+        color: #777;
+    }
+
+    #result{
+        width: 100%;
+        height: 650px;
+        float: left;
+        margin: 10px;
+    }
